@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Text } from 'react-native';
+import { Image } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
