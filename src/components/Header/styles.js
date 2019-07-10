@@ -3,10 +3,10 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   flex: 1;
   flex-direction: row;
-  height: 100%;
+  height: 80px;
   justify-content: space-between;
   align-items: center;
-  margin: 0 20px 0 12px;
+  margin: 0 25px 0 15px;
 `;
 
 export const Logo = styled.TouchableWithoutFeedback`
@@ -24,8 +24,8 @@ export const Badge = styled.Text`
   font-size: 10px;
   color: #fff;
   background: #7159c1;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border-radius: 8px;
   padding-top: 1px;
   right: -6px;

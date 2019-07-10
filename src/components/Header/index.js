@@ -24,14 +24,14 @@ const Header = ({ navigation }) => {
         <Image
           source={logo}
           style={{
-            width: 200,
-            height: 25,
+            width: 235,
+            height: 35,
             resizeMode: 'contain',
           }}
         />
       </Logo>
       <CartButton onPress={handleNavigateCart}>
-        <Icon name="shopping-cart" size={22} color="#130042" />
+        <Icon name="shopping-cart" size={28} color="#130042" />
         <Badge>99</Badge>
       </CartButton>
     </Container>

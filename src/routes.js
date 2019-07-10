@@ -1,11 +1,11 @@
 import { createAppContainer, createStackNavigator } from 'react-navigation';
-
 import React from 'react';
 
 import Header from './components/Header';
-
 import Main from './pages/Main';
 import Cart from './pages/Cart';
+
+import transitionConfig from './util/transition-config';
 
 const Routes = createAppContainer(
   createStackNavigator(
@@ -15,8 +15,7 @@ const Routes = createAppContainer(
     },
     {
       defaultNavigationOptions: {
-        headerTitle: <Header />,
-        headerLeft: null,
+        header: <Header />,
         headerStyle: {
           backgroundColor: '#fff',
           elevation: 0,
@@ -25,6 +24,9 @@ const Routes = createAppContainer(
         },
         headerTintColor: '#fff',
       },
+      headerMode: 'float',
+      headerTransitionPreset: 'uikit',
+      transitionConfig,
     }
   )
 );
