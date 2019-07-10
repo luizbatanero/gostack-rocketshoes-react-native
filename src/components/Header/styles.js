@@ -6,7 +6,8 @@ export const Container = styled.View`
   height: 80px;
   justify-content: space-between;
   align-items: center;
-  margin: 0 25px 0 15px;
+  padding: 0 25px 0 15px;
+  background: #fff;
 `;
 
 export const Logo = styled.TouchableWithoutFeedback`
