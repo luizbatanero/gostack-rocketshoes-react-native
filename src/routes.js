@@ -14,8 +14,8 @@ const Routes = createAppContainer(
       Cart,
     },
     {
-      defaultNavigationOptions: {
-        header: <Header />,
+      defaultNavigationOptions: navigation => ({
+        header: <Header {...navigation} />,
         headerStyle: {
           backgroundColor: '#fff',
           elevation: 0,
@@ -23,7 +23,7 @@ const Routes = createAppContainer(
           borderBottomWidth: 0,
         },
         headerTintColor: '#fff',
-      },
+      }),
       headerMode: 'float',
       headerTransitionPreset: 'uikit',
       transitionConfig,

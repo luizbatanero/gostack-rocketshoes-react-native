@@ -1,6 +1,5 @@
 import React from 'react';
 import { Image } from 'react-native';
-import { withNavigation } from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -38,4 +37,4 @@ const Header = ({ navigation }) => {
   );
 };
 
-export default withNavigation(Header);
+export default Header;
