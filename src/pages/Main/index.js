@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { ActivityIndicator } from 'react-native';
-import { darken } from 'polished';
 
+import { darken } from 'polished';
 import { formatPrice } from '../../util/format';
 
 import { fetchProductsRequest } from '../../store/modules/products/actions';
@@ -29,11 +29,23 @@ import {
   TotalWrapper,
   TotalLabel,
   TotalValue,
+  ShimmerList,
+  ShimmerImage,
+  ShimmerTitle,
+  ShimmerPrice,
+  ShimmerButton,
 } from './styles';
 
 const Main = ({ navigation }) => {
   const loading = useSelector(state => state.products.isFetching);
   const products = useSelector(state => state.products.products);
+  const [visible, setVisible] = useState(false);
+
+  if (!loading) {
+    setTimeout(() => {
+      setVisible(true);
+    }, 5000);
+  }
 
   const amount = useSelector(state =>
     state.cart.reduce((amount, product) => {
@@ -60,25 +72,40 @@ const Main = ({ navigation }) => {
     dispatch(CartActions.addToCartRequest(id));
   };
 
-  if (loading) {
-    return (
-      <Container loading>
-        <ActivityIndicator color="#fff" size="large" />
-      </Container>
-    );
-  }
-
-  return (
-    <>
-      <Container>
+  const renderItems = () => {
+    if (loading) {
+      return (
         <List
-          data={products}
-          keyExtractor={product => String(product.id)}
-          renderItem={({ item, index }) => (
+          data={[...Array(3).keys()]}
+          keyExtractor={index => String(index)}
+          renderItem={({ index }) => (
             <Product first={index === 0}>
+              <ShimmerImage autoRun visible={visible} />
+              <ShimmerTitle autoRun visible={visible} />
+              <ShimmerPrice autoRun visible={visible} />
+              <ShimmerButton autoRun visible={visible} />
+            </Product>
+          )}
+        />
+      );
+    }
+
+    return (
+      <List
+        data={products}
+        keyExtractor={product => String(product.id)}
+        renderItem={({ item, index }) => (
+          <Product first={index === 0}>
+            <ShimmerImage autoRun visible={visible}>
               <ProductImage source={{ uri: item.image }} />
+            </ShimmerImage>
+            <ShimmerTitle autoRun visible={visible}>
               <ProductTitle>{item.title}</ProductTitle>
+            </ShimmerTitle>
+            <ShimmerPrice autoRun visible={visible}>
               <ProductPrice>{formatPrice(item.price)}</ProductPrice>
+            </ShimmerPrice>
+            <ShimmerButton autoRun visible={visible}>
               <AddButton
                 onPress={() => !item.loading && handleAddProduct(item.id)}
               >
@@ -96,10 +123,16 @@ const Main = ({ navigation }) => {
                 </ProductAmount>
                 <AddButtonText>ADD TO CART</AddButtonText>
               </AddButton>
-            </Product>
-          )}
-        />
-      </Container>
+            </ShimmerButton>
+          </Product>
+        )}
+      />
+    );
+  };
+
+  return (
+    <>
+      <Container>{renderItems()}</Container>
       <BottomBar>
         {cartSize > 0 ? (
           <GoToCart>

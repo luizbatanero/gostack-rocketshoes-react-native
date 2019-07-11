@@ -1,5 +1,7 @@
 import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
+import Shimmer from 'react-native-shimmer-placeholder';
+
 import { darken } from 'polished';
 
 export const Container = styled.View`
@@ -9,6 +11,7 @@ export const Container = styled.View`
 `;
 
 export const List = styled.FlatList``;
+export const ShimmerList = styled.View``;
 
 export const Product = styled.View`
   background: #fff;
@@ -16,7 +19,7 @@ export const Product = styled.View`
   margin-top: ${props => (props.first ? '20px' : '0')};
   border-radius: 3px;
   elevation: 2;
-  padding: 10px;
+  padding: 15px 10px 10px;
 `;
 
 export const ProductImage = styled.Image`
@@ -25,16 +28,34 @@ export const ProductImage = styled.Image`
   align-self: center;
 `;
 
+export const ShimmerImage = styled(Shimmer)`
+  height: 200px;
+  width: 200px;
+  align-self: center;
+  border-radius: 100px;
+`;
+
 export const ProductTitle = styled.Text`
   font-size: 16px;
   margin: 0 8px;
 `;
 
+export const ShimmerTitle = styled(Shimmer)`
+  margin: 5px 0;
+  height: 24px;
+  width: 85%;
+`;
+
 export const ProductPrice = styled.Text`
-  margin: 5px 10px;
+  margin: 0 10px 15px;
   font-size: 22px;
-  margin-bottom: 15px;
   font-weight: bold;
+`;
+
+export const ShimmerPrice = styled(Shimmer)`
+  width: 120px;
+  height: 30px;
+  margin: 0 0 10px;
 `;
 
 export const AddButton = styled(RectButton)`
@@ -43,6 +64,12 @@ export const AddButton = styled(RectButton)`
   align-items: center;
   border-radius: 4px;
   height: 45px;
+`;
+
+export const ShimmerButton = styled(Shimmer)`
+  width: 100%;
+  height: 45px;
+  border-radius: 4px;
 `;
 
 export const ProductAmount = styled.View`
