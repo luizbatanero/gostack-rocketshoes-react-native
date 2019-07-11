@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import logo from '../../assets/images/rocketshoes.png';
 
 export const Container = styled.View`
-  flex: 1;
+  /* flex: 1; */
   flex-direction: row;
   height: 80px;
   justify-content: space-between;
