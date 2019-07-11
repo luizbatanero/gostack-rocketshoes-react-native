@@ -29,7 +29,6 @@ import {
   TotalWrapper,
   TotalLabel,
   TotalValue,
-  ShimmerList,
   ShimmerImage,
   ShimmerTitle,
   ShimmerPrice,
