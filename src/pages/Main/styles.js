@@ -7,11 +7,9 @@ import { darken } from 'polished';
 export const Container = styled.View`
   flex: 1;
   background: #7159c1;
-  padding-top: ${props => (props.loading ? '40px' : '0')};
 `;
 
 export const List = styled.FlatList``;
-export const ShimmerList = styled.View``;
 
 export const Product = styled.View`
   background: #fff;
