@@ -1,7 +1,5 @@
 import { createAppContainer, createStackNavigator } from 'react-navigation';
-import React from 'react';
 
-import Header from './components/Header';
 import Main from './pages/Main';
 import Cart from './pages/Cart';
 
@@ -14,10 +12,9 @@ const Routes = createAppContainer(
       Cart,
     },
     {
-      defaultNavigationOptions: navigation => ({
-        header: <Header {...navigation} />,
-      }),
-      headerMode: 'float',
+      defaultNavigationOptions: {
+        header: null,
+      },
       transitionConfig,
     }
   )
