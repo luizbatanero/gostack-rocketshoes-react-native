@@ -29,8 +29,8 @@ export const ProductImage = styled.Image`
 `;
 
 export const ShimmerImage = styled(Shimmer)`
-  height: 200px;
-  width: 200px;
+  height: 195px;
+  width: 195px;
   align-self: center;
   border-radius: 100px;
 `;
@@ -42,8 +42,9 @@ export const ProductTitle = styled.Text`
 
 export const ShimmerTitle = styled(Shimmer)`
   margin: 5px 0;
-  height: 24px;
+  height: 20px;
   width: 85%;
+  border-radius: 2px;
 `;
 
 export const ProductPrice = styled.Text`
@@ -54,8 +55,9 @@ export const ProductPrice = styled.Text`
 
 export const ShimmerPrice = styled(Shimmer)`
   width: 120px;
-  height: 30px;
+  height: 28px;
   margin: 0 0 10px;
+  border-radius: 2px;
 `;
 
 export const AddButton = styled(RectButton)`
