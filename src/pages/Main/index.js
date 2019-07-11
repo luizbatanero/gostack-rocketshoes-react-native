@@ -31,7 +31,7 @@ import {
   TotalValue,
 } from './styles';
 
-const Main = () => {
+const Main = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
 
@@ -114,7 +114,7 @@ const Main = () => {
               <TotalLabel>TOTAL</TotalLabel>
               <TotalValue>{total}</TotalValue>
             </TotalWrapper>
-            <GoToCartButton>
+            <GoToCartButton onPress={() => navigation.navigate('Cart')}>
               <GoToCartButtonText>GO TO CART</GoToCartButtonText>
               <Icon name="keyboard-arrow-right" color="#7159c1" size={18} />
             </GoToCartButton>
