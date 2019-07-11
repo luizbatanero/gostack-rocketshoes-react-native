@@ -12,7 +12,7 @@ const Header = ({ navigation }) => {
       </Logo>
       <CartButton onPress={() => navigation.navigate('Cart')}>
         <Icon name="shopping-cart" size={28} color="#130042" />
-        <Badge>99</Badge>
+        <Badge>0</Badge>
       </CartButton>
     </Container>
   );

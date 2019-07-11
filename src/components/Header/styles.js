@@ -10,6 +10,7 @@ export const Container = styled.View`
   align-items: center;
   padding: 0 25px 0 15px;
   background: #fff;
+  elevation: 2;
 `;
 
 export const Logo = styled.TouchableWithoutFeedback`
