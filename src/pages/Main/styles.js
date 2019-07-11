@@ -101,10 +101,11 @@ export const GoToCart = styled.View`
 
 export const GoToCartButton = styled(RectButton)`
   background: #fff;
-  padding: 8px 12px;
+  padding: 8px 10px 8px 12px;
   border-radius: 3px;
   display: flex;
   flex-direction: row;
+  align-items: center;
 `;
 
 export const GoToCartButtonText = styled.Text`

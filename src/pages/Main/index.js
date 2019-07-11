@@ -116,7 +116,7 @@ const Main = ({ navigation }) => {
           <EmptyCart>
             <Icon
               name="remove-shopping-cart"
-              color={darken(0.25, '#7159c1')}
+              color={darken(0.27, '#7159c1')}
               size={36}
             />
             <EmptyCartMessage>Your cart is empty</EmptyCartMessage>
