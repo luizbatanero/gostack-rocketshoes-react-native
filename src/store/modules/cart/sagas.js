@@ -19,7 +19,7 @@ function* addToCart({ id }) {
   const amount = currentAmount + 1;
 
   if (amount > stockAmount) {
-    Alert.alert('Amount requested is out of stock.');
+    Alert.alert('Error', 'Amount requested is out of stock.');
     return;
   }
 
@@ -45,7 +45,7 @@ function* updateAmount({ id, amount }) {
   const stockAmount = stock.data.amount;
 
   if (amount > stockAmount) {
-    Alert.alert('Amount requested is out of stock.');
+    Alert.alert('Error', 'Amount requested is out of stock.');
     return;
   }
 
