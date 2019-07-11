@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { ActivityIndicator } from 'react-native';
 import { darken } from 'polished';
 
-import api from '../../services/api';
 import { formatPrice } from '../../util/format';
 
+import { fetchProductsRequest } from '../../store/modules/products/actions';
 import * as CartActions from '../../store/modules/cart/actions';
 
 import {
@@ -32,8 +32,8 @@ import {
 } from './styles';
 
 const Main = ({ navigation }) => {
-  const [loading, setLoading] = useState(false);
-  const [products, setProducts] = useState([]);
+  const loading = useSelector(state => state.products.isFetching);
+  const products = useSelector(state => state.products.products);
 
   const amount = useSelector(state =>
     state.cart.reduce((amount, product) => {
@@ -53,24 +53,7 @@ const Main = ({ navigation }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-
-      const response = await api.get('products');
-
-      const data = response.data.map(product => ({
-        ...product,
-        priceFormatted: formatPrice(product.price),
-      }));
-
-      setProducts(data);
-
-      setTimeout(() => {
-        setLoading(false);
-      }, 500);
-    };
-
-    fetchProducts();
+    dispatch(fetchProductsRequest());
   }, []);
 
   const handleAddProduct = id => {
