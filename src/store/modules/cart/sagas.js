@@ -5,6 +5,7 @@ import {
   all,
   takeLatest,
   takeEvery,
+  delay,
 } from 'redux-saga/effects';
 import { Alert } from 'react-native';
 
@@ -14,6 +15,8 @@ import api from '../../../services/api';
 import { addToCartSuccess, updateAmountSuccess } from './actions';
 
 function* addToCart({ id }) {
+  yield delay(500);
+
   const productExists = yield select(state =>
     state.cart.find(p => p.id === id)
   );
