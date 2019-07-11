@@ -1,18 +1,44 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { rgba } from 'polished';
 
 import { formatPrice } from '../../util/format';
 
+import {
+  updateAmountRequest,
+  removeFromCart,
+} from '../../store/modules/cart/actions';
+
 import BottomBar from '../../components/BottomBar';
-import { Container, Box, Title, Message, Button, ButtonText } from './styles';
+import {
+  EmptyCart,
+  EmptyBox,
+  Title,
+  Message,
+  Button,
+  ButtonText,
+  Container,
+  Box,
+  Product,
+  ProductInfo,
+  ProductTitle,
+  ProductPrice,
+  ProductOrderInfo,
+  ProductAmountControl,
+  ProductAmountButton,
+  ProductAmount,
+  ProductSubtotal,
+  ProductImage,
+  ProductRemove,
+} from './styles';
 
 const Cart = ({ navigation }) => {
   const products = useSelector(state =>
     state.cart.map(product => ({
       ...product,
       subtotal: formatPrice(product.price * product.amount),
+      formattedPrice: formatPrice(product.price),
     }))
   );
   const total = useSelector(state =>
@@ -24,25 +50,69 @@ const Cart = ({ navigation }) => {
     )
   );
 
+  const dispatch = useDispatch();
+
+  const decrement = product =>
+    dispatch(updateAmountRequest(product.id, product.amount - 1));
+  const increment = product =>
+    dispatch(updateAmountRequest(product.id, product.amount + 1));
+  const removeProduct = id => dispatch(removeFromCart(id));
+
   if (products.length) {
     return (
-      <Container>
-        <Box>
-          <Title>TODO: CART</Title>
-        </Box>
+      <>
+        <Container>
+          <Box>
+            {products.map((product, index) => (
+              <Product key={product.id} last={index === products.length - 1}>
+                <ProductInfo>
+                  <ProductTitle>{product.title}</ProductTitle>
+                  <ProductPrice>{product.formattedPrice}</ProductPrice>
+                </ProductInfo>
+                <ProductOrderInfo>
+                  <ProductAmountControl>
+                    <ProductAmountButton onPress={() => decrement(product)}>
+                      <Icon
+                        name="remove-circle-outline"
+                        size={20}
+                        color="#7159c1"
+                      />
+                    </ProductAmountButton>
+                    <ProductAmount
+                      value={String(product.amount)}
+                      editable={false}
+                    />
+                    <ProductAmountButton onPress={() => increment(product)}>
+                      <Icon
+                        name="add-circle-outline"
+                        size={20}
+                        color="#7159c1"
+                      />
+                    </ProductAmountButton>
+                  </ProductAmountControl>
+                  <ProductSubtotal>{product.subtotal}</ProductSubtotal>
+                </ProductOrderInfo>
+                <ProductImage source={{ uri: product.image }} />
+                <ProductRemove onPress={() => removeProduct(product.id)}>
+                  <Icon name="delete-forever" size={24} color="#999" />
+                </ProductRemove>
+              </Product>
+            ))}
+          </Box>
+        </Container>
         <BottomBar
           empty={false}
           totalValue={total}
           buttonTitle="CHECKOUT"
           buttonIcon="payment"
         />
-      </Container>
+      </>
     );
   }
 
   return (
-    <Container>
-      <Box empty>
+    <EmptyCart>
+      <EmptyBox empty>
         <Icon
           name="remove-shopping-cart"
           color={rgba(0, 0, 0, 0.1)}
@@ -53,8 +123,8 @@ const Cart = ({ navigation }) => {
         <Button onPress={() => navigation.pop()}>
           <ButtonText>CONTINUE SHOPPING</ButtonText>
         </Button>
-      </Box>
-    </Container>
+      </EmptyBox>
+    </EmptyCart>
   );
 };
 

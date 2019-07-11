@@ -6,7 +6,7 @@ import { ActivityIndicator } from 'react-native';
 import { formatPrice } from '../../util/format';
 
 import { fetchProductsRequest } from '../../store/modules/products/actions';
-import * as CartActions from '../../store/modules/cart/actions';
+import { addToCartRequest } from '../../store/modules/cart/actions';
 
 import BottomBar from '../../components/BottomBar';
 import {
@@ -58,7 +58,7 @@ const Main = ({ navigation }) => {
   }
 
   const handleAddProduct = id => {
-    dispatch(CartActions.addToCartRequest(id));
+    dispatch(addToCartRequest(id));
   };
 
   const renderItems = () => {
