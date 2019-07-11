@@ -1,4 +1,11 @@
-import { call, select, put, all, takeLatest } from 'redux-saga/effects';
+import {
+  call,
+  select,
+  put,
+  all,
+  takeLatest,
+  takeEvery,
+} from 'redux-saga/effects';
 import { Alert } from 'react-native';
 
 import { formatPrice } from '../../../util/format';
@@ -53,6 +60,6 @@ function* updateAmount({ id, amount }) {
 }
 
 export default all([
-  takeLatest('@cart/ADD_REQUEST', addToCart),
+  takeEvery('@cart/ADD_REQUEST', addToCart),
   takeLatest('@cart/UPDATE_AMOUNT_REQUEST', updateAmount),
 ]);

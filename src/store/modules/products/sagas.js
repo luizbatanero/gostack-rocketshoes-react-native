@@ -11,6 +11,7 @@ function* fetchProducts() {
   const data = response.data.map(product => ({
     ...product,
     priceFormatted: formatPrice(product.price),
+    loading: false,
   }));
 
   yield put(fetchProductsSuccess(data));
