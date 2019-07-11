@@ -27,8 +27,8 @@ export const ProductImage = styled.Image`
 `;
 
 export const ShimmerImage = styled(Shimmer)`
-  height: 195px;
-  width: 195px;
+  height: 197px;
+  width: 197px;
   align-self: center;
   border-radius: 100px;
 `;
