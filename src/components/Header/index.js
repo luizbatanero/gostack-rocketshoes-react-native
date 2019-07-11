@@ -1,35 +1,16 @@
 import React from 'react';
-import { Image } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { Container, Logo, CartButton, Badge } from './styles';
-import logo from '../../assets/images/rocketshoes.png';
+import { Container, Logo, LogoImage, CartButton, Badge } from './styles';
 
 const Header = ({ navigation }) => {
-  const handleNavigateLogo = () => {
-    navigation.pop();
-  };
-
-  const handleNavigateCart = () => {
-    if (navigation.state.route !== 'Cart') {
-      navigation.navigate('Cart');
-    }
-  };
-
   return (
     <Container>
-      <Logo onPress={handleNavigateLogo}>
-        <Image
-          source={logo}
-          style={{
-            width: 235,
-            height: 35,
-            resizeMode: 'contain',
-          }}
-        />
+      <Logo onPress={() => navigation.pop()}>
+        <LogoImage />
       </Logo>
-      <CartButton onPress={handleNavigateCart}>
+      <CartButton onPress={() => navigation.navigate('Cart')}>
         <Icon name="shopping-cart" size={28} color="#130042" />
         <Badge>99</Badge>
       </CartButton>

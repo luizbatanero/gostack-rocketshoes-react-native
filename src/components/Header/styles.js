@@ -1,5 +1,7 @@
 import styled from 'styled-components/native';
 
+import logo from '../../assets/images/rocketshoes.png';
+
 export const Container = styled.View`
   flex: 1;
   flex-direction: row;
@@ -12,6 +14,14 @@ export const Container = styled.View`
 
 export const Logo = styled.TouchableWithoutFeedback`
   width: 200px;
+`;
+
+export const LogoImage = styled.Image.attrs({
+  source: logo,
+  resizeMode: 'contain',
+})`
+  width: 235px;
+  height: 30px;
 `;
 
 export const CartButton = styled.TouchableOpacity`
