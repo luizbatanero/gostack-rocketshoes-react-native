@@ -42,10 +42,10 @@ export const AddButton = styled(RectButton)`
   flex-direction: row;
   align-items: center;
   border-radius: 4px;
+  height: 45px;
 `;
 
 export const ProductAmount = styled.View`
-  padding: 12px;
   background: ${props =>
     props.loading ? darken(0.06, '#7159c1') : darken(0.03, '#7159c1')};
   border-top-left-radius: 4px;
@@ -54,6 +54,7 @@ export const ProductAmount = styled.View`
   align-items: center;
   justify-content: center;
   width: 75px;
+  align-self: stretch;
 `;
 
 export const ProductAmountText = styled.Text`
