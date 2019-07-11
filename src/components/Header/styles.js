@@ -3,9 +3,8 @@ import styled from 'styled-components/native';
 import logo from '../../assets/images/rocketshoes.png';
 
 export const Container = styled.View`
-  /* flex: 1; */
   flex-direction: row;
-  height: 80px;
+  height: 56px;
   justify-content: space-between;
   align-items: center;
   padding: 0 25px 0 15px;
@@ -21,7 +20,7 @@ export const LogoImage = styled.Image.attrs({
   source: logo,
   resizeMode: 'contain',
 })`
-  width: 235px;
+  width: 200px;
   height: 30px;
 `;
 
