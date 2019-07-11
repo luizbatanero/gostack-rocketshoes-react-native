@@ -70,7 +70,7 @@ const Cart = ({ navigation }) => {
                   <ProductTitle>{product.title}</ProductTitle>
                   <ProductPrice>{product.formattedPrice}</ProductPrice>
                   <ProductRemove onPress={() => removeProduct(product.id)}>
-                    <Icon name="delete-forever" size={20} color="#999" />
+                    <Icon name="delete-forever" size={28} color="#999" />
                   </ProductRemove>
                 </ProductInfo>
                 <ProductOrderInfo>
@@ -78,7 +78,7 @@ const Cart = ({ navigation }) => {
                     <ProductAmountButton onPress={() => decrement(product)}>
                       <Icon
                         name="remove-circle-outline"
-                        size={20}
+                        size={22}
                         color="#7159c1"
                       />
                     </ProductAmountButton>
@@ -86,7 +86,7 @@ const Cart = ({ navigation }) => {
                     <ProductAmountButton onPress={() => increment(product)}>
                       <Icon
                         name="add-circle-outline"
-                        size={20}
+                        size={22}
                         color="#7159c1"
                       />
                     </ProductAmountButton>

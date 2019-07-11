@@ -58,7 +58,7 @@ export const Product = styled.View`
   flex-direction: row;
   border-bottom-width: ${props => (props.last ? '0' : '1px')};
   border-bottom-color: #ddd;
-  padding: 10px;
+  padding: 15px;
 `;
 
 export const ProductInfo = styled.View`
@@ -91,13 +91,13 @@ export const ProductAmountButton = styled.TouchableOpacity``;
 
 export const ProductAmount = styled.Text`
   text-align: center;
-  width: 24px;
-  font-size: 13px;
+  width: 36px;
+  font-size: 15px;
 `;
 
 export const ProductSubtotal = styled.Text`
   margin-top: auto;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: bold;
 `;
 

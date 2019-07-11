@@ -4,7 +4,7 @@ import logo from '../../assets/images/rocketshoes.png';
 
 export const Container = styled.View`
   flex-direction: row;
-  height: 56px;
+  height: 80px;
   justify-content: space-between;
   align-items: center;
   padding: 0 25px 0 15px;
@@ -13,14 +13,14 @@ export const Container = styled.View`
 `;
 
 export const Logo = styled.TouchableWithoutFeedback`
-  width: 200px;
+  width: 220px;
 `;
 
 export const LogoImage = styled.Image.attrs({
   source: logo,
   resizeMode: 'contain',
 })`
-  width: 200px;
+  width: 220px;
   height: 30px;
 `;
 
