@@ -12,7 +12,11 @@ import { Alert } from 'react-native';
 import { formatPrice } from '../../../util/format';
 import api from '../../../services/api';
 
-import { addToCartSuccess, updateAmountSuccess } from './actions';
+import {
+  addToCartSuccess,
+  updateAmountSuccess,
+  updateAmountFailure,
+} from './actions';
 
 function* addToCart({ id }) {
   yield delay(500);
@@ -30,6 +34,7 @@ function* addToCart({ id }) {
 
   if (amount > stockAmount) {
     Alert.alert('Error', 'Amount requested is out of stock.');
+    yield put(updateAmountFailure(id));
     return;
   }
 

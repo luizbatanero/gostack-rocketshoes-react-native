@@ -27,6 +27,7 @@ export default function products(state = INITIAL_STATE, action) {
         product.loading = false;
       });
     case '@cart/UPDATE_AMOUNT_SUCCESS':
+    case '@cart/UPDATE_AMOUNT_FAILURE':
       return produce(state, draft => {
         const product = draft.products.find(p => p.id === action.id);
         product.loading = false;
