@@ -96,10 +96,20 @@ const Main = ({ navigation }) => {
               <ProductImage source={{ uri: item.image }} />
               <ProductTitle>{item.title}</ProductTitle>
               <ProductPrice>{formatPrice(item.price)}</ProductPrice>
-              <AddButton onPress={() => handleAddProduct(item.id)}>
-                <ProductAmount>
-                  <Icon name="add-shopping-cart" color="#FFF" size={20} />
-                  <ProductAmountText>{amount[item.id] || 0}</ProductAmountText>
+              <AddButton
+                onPress={() => !item.loading && handleAddProduct(item.id)}
+              >
+                <ProductAmount loading={item.loading}>
+                  {item.loading ? (
+                    <ActivityIndicator color="#FFF" size={20} />
+                  ) : (
+                    <>
+                      <Icon name="add-shopping-cart" color="#FFF" size={20} />
+                      <ProductAmountText>
+                        {amount[item.id] || 0}
+                      </ProductAmountText>
+                    </>
+                  )}
                 </ProductAmount>
                 <AddButtonText>ADD TO CART</AddButtonText>
               </AddButton>

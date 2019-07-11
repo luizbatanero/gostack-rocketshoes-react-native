@@ -46,11 +46,14 @@ export const AddButton = styled(RectButton)`
 
 export const ProductAmount = styled.View`
   padding: 12px;
-  background: ${darken(0.03, '#7159c1')};
+  background: ${props =>
+    props.loading ? darken(0.06, '#7159c1') : darken(0.03, '#7159c1')};
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  width: 75px;
 `;
 
 export const ProductAmountText = styled.Text`
