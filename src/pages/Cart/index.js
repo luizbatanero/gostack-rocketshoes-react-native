@@ -65,9 +65,13 @@ const Cart = ({ navigation }) => {
           <Box>
             {products.map((product, index) => (
               <Product key={product.id} last={index === products.length - 1}>
+                <ProductImage source={{ uri: product.image }} />
                 <ProductInfo>
                   <ProductTitle>{product.title}</ProductTitle>
                   <ProductPrice>{product.formattedPrice}</ProductPrice>
+                  <ProductRemove onPress={() => removeProduct(product.id)}>
+                    <Icon name="delete-forever" size={20} color="#999" />
+                  </ProductRemove>
                 </ProductInfo>
                 <ProductOrderInfo>
                   <ProductAmountControl>
@@ -78,10 +82,7 @@ const Cart = ({ navigation }) => {
                         color="#7159c1"
                       />
                     </ProductAmountButton>
-                    <ProductAmount
-                      value={String(product.amount)}
-                      editable={false}
-                    />
+                    <ProductAmount>{product.amount}</ProductAmount>
                     <ProductAmountButton onPress={() => increment(product)}>
                       <Icon
                         name="add-circle-outline"
@@ -92,10 +93,6 @@ const Cart = ({ navigation }) => {
                   </ProductAmountControl>
                   <ProductSubtotal>{product.subtotal}</ProductSubtotal>
                 </ProductOrderInfo>
-                <ProductImage source={{ uri: product.image }} />
-                <ProductRemove onPress={() => removeProduct(product.id)}>
-                  <Icon name="delete-forever" size={24} color="#999" />
-                </ProductRemove>
               </Product>
             ))}
           </Box>

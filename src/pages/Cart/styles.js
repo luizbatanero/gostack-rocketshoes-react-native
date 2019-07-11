@@ -55,30 +55,58 @@ export const Box = styled.View`
   elevation: 2;
 `;
 export const Product = styled.View`
+  flex-direction: row;
   border-bottom-width: ${props => (props.last ? '0' : '1px')};
   border-bottom-color: #ddd;
   padding: 10px;
 `;
 
-export const ProductInfo = styled.View``;
+export const ProductInfo = styled.View`
+  flex-shrink: 1;
+  margin: 0 10px;
+`;
 
-export const ProductTitle = styled.Text``;
+export const ProductTitle = styled.Text`
+  font-size: 13px;
+`;
 
-export const ProductPrice = styled.Text``;
+export const ProductPrice = styled.Text`
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 5px;
+`;
 
-export const ProductOrderInfo = styled.View``;
+export const ProductOrderInfo = styled.View`
+  flex-shrink: 0;
+  align-items: flex-end;
+  margin-left: auto;
+`;
 
-export const ProductAmountControl = styled.View``;
+export const ProductAmountControl = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
 
 export const ProductAmountButton = styled.TouchableOpacity``;
 
-export const ProductAmount = styled.TextInput``;
+export const ProductAmount = styled.Text`
+  text-align: center;
+  width: 24px;
+  font-size: 13px;
+`;
 
-export const ProductSubtotal = styled.Text``;
+export const ProductSubtotal = styled.Text`
+  margin-top: auto;
+  font-size: 13px;
+  font-weight: bold;
+`;
 
 export const ProductImage = styled.Image`
   width: 70px;
   height: 70px;
 `;
 
-export const ProductRemove = styled.TouchableOpacity``;
+export const ProductRemove = styled.TouchableOpacity`
+  margin-top: auto;
+  margin-left: -4px;
+`;
