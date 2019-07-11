@@ -36,15 +36,8 @@ import {
 } from './styles';
 
 const Main = ({ navigation }) => {
-  const loading = useSelector(state => state.products.isFetching);
-  const products = useSelector(state => state.products.products);
+  const products = useSelector(state => state.products);
   const [visible, setVisible] = useState(false);
-
-  if (!loading) {
-    setTimeout(() => {
-      setVisible(true);
-    }, 5000);
-  }
 
   const amount = useSelector(state =>
     state.cart.reduce((amount, product) => {
@@ -67,12 +60,18 @@ const Main = ({ navigation }) => {
     dispatch(fetchProductsRequest());
   }, []);
 
+  if (products.length) {
+    setTimeout(() => {
+      setVisible(true);
+    }, 200);
+  }
+
   const handleAddProduct = id => {
     dispatch(CartActions.addToCartRequest(id));
   };
 
   const renderItems = () => {
-    if (loading) {
+    if (!products.length) {
       return (
         <List
           data={[...Array(3).keys()]}

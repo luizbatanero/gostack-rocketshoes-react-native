@@ -16,13 +16,6 @@ const Routes = createAppContainer(
     {
       defaultNavigationOptions: navigation => ({
         header: <Header {...navigation} />,
-        headerStyle: {
-          backgroundColor: '#fff',
-          elevation: 0,
-          shadowOpacity: 0,
-          borderBottomWidth: 0,
-        },
-        headerTintColor: '#fff',
       }),
       headerMode: 'float',
       headerTransitionPreset: 'uikit',
