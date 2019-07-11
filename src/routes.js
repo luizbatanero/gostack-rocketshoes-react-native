@@ -18,7 +18,6 @@ const Routes = createAppContainer(
         header: <Header {...navigation} />,
       }),
       headerMode: 'float',
-      headerTransitionPreset: 'uikit',
       transitionConfig,
     }
   )
