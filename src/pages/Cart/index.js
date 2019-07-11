@@ -4,6 +4,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { rgba } from 'polished';
 
 import { formatPrice } from '../../util/format';
+
+import BottomBar from '../../components/BottomBar';
 import { Container, Box, Title, Message, Button, ButtonText } from './styles';
 
 const Cart = ({ navigation }) => {
@@ -28,6 +30,12 @@ const Cart = ({ navigation }) => {
         <Box>
           <Title>TODO: CART</Title>
         </Box>
+        <BottomBar
+          empty={false}
+          totalValue={total}
+          buttonTitle="CHECKOUT"
+          buttonIcon="payment"
+        />
       </Container>
     );
   }

@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { ActivityIndicator } from 'react-native';
 
-import { darken } from 'polished';
 import { formatPrice } from '../../util/format';
 
 import { fetchProductsRequest } from '../../store/modules/products/actions';
 import * as CartActions from '../../store/modules/cart/actions';
 
+import BottomBar from '../../components/BottomBar';
 import {
   Container,
   List,
@@ -20,15 +20,6 @@ import {
   ProductAmount,
   ProductAmountText,
   AddButtonText,
-  BottomBar,
-  EmptyCart,
-  EmptyCartMessage,
-  GoToCart,
-  GoToCartButton,
-  GoToCartButtonText,
-  TotalWrapper,
-  TotalLabel,
-  TotalValue,
   ShimmerImage,
   ShimmerTitle,
   ShimmerPrice,
@@ -131,29 +122,13 @@ const Main = ({ navigation }) => {
   return (
     <>
       <Container>{renderItems()}</Container>
-      <BottomBar>
-        {cartSize > 0 ? (
-          <GoToCart>
-            <TotalWrapper>
-              <TotalLabel>TOTAL</TotalLabel>
-              <TotalValue>{total}</TotalValue>
-            </TotalWrapper>
-            <GoToCartButton onPress={() => navigation.navigate('Cart')}>
-              <GoToCartButtonText>GO TO CART</GoToCartButtonText>
-              <Icon name="keyboard-arrow-right" color="#7159c1" size={18} />
-            </GoToCartButton>
-          </GoToCart>
-        ) : (
-          <EmptyCart>
-            <Icon
-              name="remove-shopping-cart"
-              color={darken(0.27, '#7159c1')}
-              size={36}
-            />
-            <EmptyCartMessage>Your cart is empty</EmptyCartMessage>
-          </EmptyCart>
-        )}
-      </BottomBar>
+      <BottomBar
+        empty={cartSize <= 0}
+        totalValue={total}
+        buttonTitle="GO TO CART"
+        buttonIcon="keyboard-arrow-right"
+        onPress={() => navigation.navigate('Cart')}
+      />
     </>
   );
 };
